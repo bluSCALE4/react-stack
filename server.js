@@ -7,6 +7,3 @@ new WebPackDevServer(webpack(config), {
   hot: true,
   historyApiFallback: true
 }).listen(8080, 'localhost');
-
-
-
