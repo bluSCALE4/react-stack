@@ -5,11 +5,19 @@ class Actions {
   constructor() {
     this.generateActions(
       'channelsReceived',
-      'channelsFailed'
+      'channelsFailed',
+      'messagesReceived',
+      'messagesFailed',
+      'channelOpened',
+      'messagesLoading',
+      'sendMessage',
+      'messageSendSuccess',
+      'messageSendError',
+      'messageReceived'
     );
   }
   
-  login(args) {
+  login(router) {
     return (dispatch) => {
       var firebaseRef = new Firebase('https://react-stack-blu.firebaseio.com');
       firebaseRef.authWithOAuthPopup("google", (error, user) => {
@@ -18,6 +26,8 @@ class Actions {
         }
 
         dispatch(user);
+
+        router.transitionTo('/chat');
       });
     }
   }
